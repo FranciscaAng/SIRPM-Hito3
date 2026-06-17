@@ -7,7 +7,7 @@ import java.util.Random;
 public class GeneradorMasivo {
     public static void main(String[] args) {
         String rutaArchivo = "dataset_1GB_sirpm.csv";
-        long filasObjetivo = 16_000_000; 
+        long filasObjetivo = 18_000_000; 
         String cabecera = "id,origen,destino,peso,volumen,tipocarga,certificadointernacional,temperaturarequerida,diastransito\n";
         
         String[] tiposCarga = {"Hazmat", "Reefer", "Dry", "Invalido"};
