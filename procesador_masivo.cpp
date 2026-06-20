@@ -11,9 +11,7 @@ int main(int argc, char* argv[]) {
     if (!archivo.is_open()) return 1;
 
     string linea;
-    // Pre-reservamos memoria para que getline no fragmente la RAM
     linea.reserve(256); 
-
     int hazmat = 0, reefer = 0, dry = 0, errores = 0, total = 0;
     bool primeraLinea = true;
 
@@ -29,11 +27,9 @@ int main(int argc, char* argv[]) {
         }
 
         total++;
-
         int comas = 0;
         size_t inicioCarga = 0;
 
-        // Buscamos la 5ta coma manualmente
         for (size_t i = 0; i < linea.length(); i++) {
             if (linea[i] == ',') {
                 comas++;
@@ -43,8 +39,6 @@ int main(int argc, char* argv[]) {
                 }
             }
         }
-
-        // Si encontramos la columna correcta, comparamos el texto sin extraerlo
         if (comas == 5) {
             if (linea.compare(inicioCarga, 6, "Hazmat") == 0) {
                 hazmat++;
@@ -59,7 +53,6 @@ int main(int argc, char* argv[]) {
             errores++;
         }
     }
-
     archivo.close();
 
     ofstream resumen("resumen_sirpm.csv");
@@ -69,6 +62,5 @@ int main(int argc, char* argv[]) {
     resumen << "Errores," << errores << '\n';
     resumen << "Total," << total << '\n';
     resumen.close();
-
     return 0;
 }
